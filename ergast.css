@@ -1,0 +1,29 @@
+.container {
+    margin-top:50px;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.welcome {
+    height: 500px;
+    padding-top: 100px;
+    border: 2px solid gray;
+    text-align: center;
+    color: white;
+    background-image: url(https://media.istockphoto.com/photos/racing-flags-picture-id172693639?k)
+}
+
+.text-box {
+    padding: 50px;
+    background-color: black;
+}
+
+
+.form {
+    padding: 10px;
+    border: 2px solid gray
+}
+
+.table {
+    padding: 10px;
+    border: 2px solid gray
+}
