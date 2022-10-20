@@ -1,17 +1,17 @@
 const element = document.getElementById("submit");
 element.addEventListener("click", (event)=>handleSubmit(event));
 
-function handleSubmit(event){
+async function handleSubmit(event){
     event.stopPropagation();
     event.preventDefault();
     console.log("Form was submitted")
-    const ergInfo = document.getElementsByName('year','round')[0].value
+    const ergInfo = await document.getElementsByName('year')[0].value
     console.log(ergInfo)
     doAPICall(ergInfo);
 }
 
 async function doAPICall(pokeName){
-    let result = await axios.get(`https://ergast.com/api/f1/${season}/${round}/driverstandings`)
+    let result = await axios.get(`https://ergast.com/api/f1/${season}/driverstandings.json`)
     console.log(result)
     result = result.data
 
@@ -55,3 +55,4 @@ async function doAPICall(pokeName){
     th.innerText = result.data['Constructors']['name'];
     tr.appendChild(th);
 }
+
