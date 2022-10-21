@@ -3,40 +3,42 @@ async function doAPICall(year, round){
     console.log(result)
     result = result.data
 
-    let tbody = document.getElementsByTagName('tbody')[0]['MRData']['StandingsTable']['StandingsLists']['DriverStandings'];
+    let tbody = document.getElementsByTagName('tbody')['DriverStandings'];
 
-    let tr = document.createElement('tr');
-    tbody.appendChild(tr)
+    let thead = document.getElementById('thead');
+    th.scope="col";
+    th.innerText = result.data;
+    tbody.appendChild(thead);
 
     let th = document.createElement('th');
     th.scope="col";
-    th.innerText = result.data["Driver"]['givenName'];
-    tr.appendChild(th);
+    th.innerText = result.data;
+    thead.appendChild(th);
     
     th = document.createElement('th');
     th.scope="col";
     th.innerText = result.data["Driver"]['familyName'];
-    tr.appendChild(th);
+    thead.appendChild(th);
     
     th = document.createElement('th');
     th.scope="col";
     th.innerText = result.data["Driver"]['dateOfBirth'];
-    tr.appendChild(th);
+    thead.appendChild(th);
 
     th = document.createElement('th');
     th.scope="col";
     th.innerText = result.data["Driver"]['nationality'];
-    tr.appendChild(th);
+    thead.appendChild(th);
 
     th = document.createElement('th');
     th.scope="col";
     th.innerText = result.data[0]['position'];
-    tr.appendChild(th);
+    thead.appendChild(th);
 
     th = document.createElement('th');
     th.scope="col";
     th.innerText = result.data[0]['wins'];
-    tr.appendChild(th);
+    thead.appendChild(th);
 
     th = document.createElement('th');
     th.scope="col";
