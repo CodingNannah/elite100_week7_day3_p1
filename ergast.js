@@ -1,21 +1,9 @@
-const element = document.getElementById("submit");
-element.addEventListener("click", (event)=>handleSubmit(event));
-
-async function handleSubmit(event){
-    event.stopPropagation();
-    event.preventDefault();
-    console.log("Form was submitted")
-    const ergInfo = await document.getElementsByName('year')[0].value
-    console.log(ergInfo)
-    doAPICall(ergInfo);
-}
-
-async function doAPICall(pokeName){
-    let result = await axios.get(`https://ergast.com/api/f1/${season}/driverstandings.json`)
+async function doAPICall(year, round){
+    let result = await axios.get(`https://ergast.com/api/f1/${year}/${round}/driverStandings.json`)
     console.log(result)
     result = result.data
 
-    // let tbody = document.getElementsByTagName('tbody')[0]['MRData']['StandingsTable']['StandingsLists']['DriverStandings'];
+    let tbody = document.getElementsByTagName('tbody')[0]['MRData']['StandingsTable']['StandingsLists']['DriverStandings'];
 
     let tr = document.createElement('tr');
     tbody.appendChild(tr)
@@ -56,3 +44,15 @@ async function doAPICall(pokeName){
     tr.appendChild(th);
 }
 
+function handleSubmit(event){
+    event.stopPropagation();
+    event.preventDefault();
+    console.log("Form was submitted")
+    const year = document.getElementsByName('year')[0].value
+    const round = document.getElementsByName('round')[0].value
+    console.log(year, round);
+    doAPICall(year, round);
+}
+
+const element = document.getElementById("submit");
+element.addEventListener("click", (event)=>handleSubmit(event));
